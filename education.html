@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education — Angeline G. Garcia</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── Timeline ── */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--border));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -34px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-dot.active {
+      background: var(--accent);
+    }
+
+    .timeline-dot svg {
+      width: 11px; height: 11px;
+      color: var(--white);
+    }
+
+    .timeline-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .timeline-card:hover {
+      border-color: #BDD7FB;
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-card-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--ink) 0%, #1c2a40 100%);
+    }
+
+    .timeline-card-header .school {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.2rem;
+      color: #F0F6FC;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .timeline-card-header .campus {
+      font-size: 0.82rem;
+      color: #79C0FF;
+      font-weight: 500;
+    }
+
+    .timeline-card-body { padding: 20px 24px; }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .edu-degree {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .edu-year {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .edu-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .edu-details {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .edu-detail-item {
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+    }
+
+    .edu-detail-item .d-label {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 3px;
+    }
+
+    .edu-detail-item .d-value {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--accent-bg);
+      border: 1px solid #BDD7FB;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 0.875rem;
+      color: var(--accent-dk);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .highlight-box svg {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--accent);
+    }
+
+    /* Aspirations */
+    .aspirations {
+      margin-top: 40px;
+    }
+
+    .aspirations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .aspiration-card {
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .aspiration-card .a-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .aspiration-card .a-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+    .aspiration-card .a-text  { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-initials">AG</div>
+    <span class="nav-brand-name">Angeline G. Garcia</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="education.html" class="active">Education</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="section-eyebrow"><span>Education</span></div>
+
+  <!-- Timeline rendered from data.js -->
+  <div class="timeline" id="edu-timeline"></div>
+
+  <!-- Aspirations -->
+  <div class="aspirations reveal">
+    <div class="section-eyebrow"><span>Academic &amp; Professional Milestones</span></div>
+    <div class="aspirations-grid">
+      <div class="aspiration-card">
+        <div class="a-icon">🎓</div>
+        <div class="a-title">Academic Distinction</div>
+        <div class="a-text">Leveraging a proven track record of academic excellence and core computer science fundamentals.</div>
+      </div>
+      <div class="aspiration-card">
+        <div class="a-icon">💼</div>
+        <div class="a-title">Field Experience</div>
+        <div class="a-text">Applying hands-on internship experience in enterprise IT environments and software workflows.</div>
+      </div>
+      <div class="aspiration-card">
+        <div class="a-icon">🏆</div>
+        <div class="a-title">Capstone Engineering</div>
+        <div class="a-text">Developing a comprehensive, data-driven computer science project focused on optimized systems performance.</div>
+      </div>
+      <div class="aspiration-card">
+        <div class="a-icon">🌐</div>
+        <div class="a-title">Software &amp; Web Architecture</div>
+        <div class="a-text">Entering the technology sector to architect clean, efficient, and accessible enterprise-grade web platforms.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  © <span id="footer-year"></span> <span class="site-footer-name">Angeline G. Garcia</span> · BS Computer Science
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  const timeline = document.getElementById('edu-timeline');
+
+  PROFILE.education.forEach((edu, i) => {
+    const item = document.createElement('div');
+    item.className = 'timeline-item reveal';
+    item.innerHTML = `
+      <div class="timeline-dot active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="timeline-card">
+        <div class="timeline-card-header">
+          <div class="school">${edu.school}</div>
+          <div class="campus">${edu.campus}</div>
+        </div>
+        <div class="timeline-card-body">
+          <div class="edu-row">
+            <div class="edu-degree">${edu.degree}</div>
+            <div class="edu-year">${edu.year}</div>
+          </div>
+          <div class="edu-badges">
+            <span class="badge badge-green">● ${edu.status}</span>
+            <span class="badge badge-blue">${edu.location}</span>
+          </div>
+          <div class="edu-details">
+            <div class="edu-detail-item">
+              <div class="d-label">Program</div>
+              <div class="d-value">BS Computer Science</div>
+            </div>
+            <div class="edu-detail-item">
+              <div class="d-label">Period</div>
+              <div class="d-value">${edu.year}</div>
+            </div>
+            <div class="edu-detail-item">
+              <div class="d-label">Campus</div>
+              <div class="d-value">South La Union</div>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Deepening competencies in modern web technologies, computational theory, and structured systems development.
+          </div>
+        </div>
+      </div>
+    `;
+    timeline.appendChild(item);
+  });
+</script>
+</body>
+</html>

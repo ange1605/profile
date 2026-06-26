@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — Angeline G. Garcia</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .skills-section-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .skills-section-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skills-section-header svg {
+      width: 15px; height: 15px; color: var(--muted);
+    }
+
+    .skills-section-header h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .skills-section-body { padding: 24px; }
+
+    /* Progress bars */
+    .skill-bar-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .skill-bar-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .skill-bar-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .skill-bar-pct {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .skill-bar-track {
+      height: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent) 0%, #79C0FF 100%);
+      transition: width 1s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .skill-bar-fill.soft {
+      background: linear-gradient(90deg, #1A7F37 0%, #56d364 100%);
+    }
+
+    /* Legend */
+    .skill-legend {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    .legend-dot {
+      width: 10px; height: 4px;
+      border-radius: 2px;
+    }
+
+    .legend-dot.tech { background: var(--accent); }
+    .legend-dot.soft { background: var(--green); }
+
+    /* Overview chips */
+    .overview-card {
+      margin-top: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .overview-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .overview-header svg { width: 15px; height: 15px; color: var(--muted); }
+    .overview-header h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .overview-body { padding: 24px; }
+
+    .skill-chips-group { margin-bottom: 20px; }
+    .skill-chips-group:last-child { margin-bottom: 0; }
+
+    .skill-chips-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-chip {
+      padding: 6px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--body);
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .skill-chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+      color: var(--accent-dk);
+    }
+
+    /* Certificates Grid & Layout styling */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .cert-image-wrap {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      margin-bottom: 8px;
+    }
+
+    .cert-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .cert-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .cert-issuer {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* CTA */
+    .skills-cta {
+      margin-top: 24px;
+      background: linear-gradient(135deg, var(--ink) 0%, #1c2a40 100%);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .skills-cta-text h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.3rem;
+      color: #F0F6FC;
+      margin-bottom: 6px;
+    }
+
+    .skills-cta-text p {
+      font-size: 0.875rem;
+      color: #8B949E;
+    }
+
+    @media (max-width: 640px) {
+      .skills-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-initials">AG</div>
+    <span class="nav-brand-name">Angeline G. Garcia</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="education.html">Education</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="section-eyebrow"><span>Skills & Achievements</span></div>
+
+  <!-- 1. Visual Progress Skill Bars -->
+  <div class="skills-layout">
+    <!-- Technical -->
+    <div class="skills-section-card reveal" id="tech-card">
+      <div class="skills-section-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <h2>Technical Skills</h2>
+      </div>
+      <div class="skills-section-body">
+        <div class="skill-bar-list" id="tech-bars"></div>
+        <div class="skill-legend">
+          <div class="legend-item"><div class="legend-dot tech"></div>Technical proficiency</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soft -->
+    <div class="skills-section-card reveal" id="soft-card">
+      <div class="skills-section-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <h2>Professional Skills</h2>
+      </div>
+      <div class="skills-section-body">
+        <div class="skill-bar-list" id="soft-bars"></div>
+        <div class="skill-legend">
+          <div class="legend-item"><div class="legend-dot soft"></div>Professional competency</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Skills Overview Chips -->
+  <div class="overview-card reveal" style="margin-top: 24px;">
+    <div class="overview-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <h2>Skills Overview</h2>
+    </div>
+    <div class="overview-body">
+      <div class="skill-chips-group">
+        <div class="skill-chips-group-label">Technical Focus Areas</div>
+        <div class="skill-chips" id="tech-chips"></div>
+      </div>
+      <div class="skill-chips-group">
+        <div class="skill-chips-group-label">Professional Competencies</div>
+        <div class="skill-chips" id="soft-chips"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Certifications & Credentials (Positioned right after all skills sections) -->
+  <div class="overview-card reveal" id="cert-section" style="margin-top: 24px;">
+    <div class="overview-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h2>Certifications & Credentials</h2>
+    </div>
+    <div class="overview-body">
+      <div class="cert-grid" id="cert-container"></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="skills-cta reveal">
+    <div class="skills-cta-text">
+      <h3>Always learning & growing.</h3>
+      <p>These skill sets are continuously expanding. Let's work together on your next project.</p>
+    </div>
+    <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.2);color:#F0F6FC;">
+      Get in Touch →
+    </a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  © <span id="footer-year"></span> Angeline G. Garcia · BS Computer Science
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // 📝 ADJUST YOUR CERTIFICATE DATA HERE:
+  const localCertificates = [
+    { 
+      title: "JavaScript Essentials 1", 
+      issuer: "Cisco Networking Academy",
+      image: "assets/img/CISCO.jpg" 
+    },
+    { 
+      title: "AI Fluency:Frameworks and Foundations", 
+      issuer: "Anthropic",
+      image: "assets/img/AIFLUENCY.jpg" 
+    }
+  ];
+
+  const technicalSkills = (typeof PROFILE !== 'undefined' && PROFILE.skills && PROFILE.skills.technical) || [];
+  const softSkills = (typeof PROFILE !== 'undefined' && PROFILE.skills && PROFILE.skills.soft) || [];
+  
+  const externalCerts = (typeof PROFILE !== 'undefined' && (PROFILE.certifications || (PROFILE.skills && PROFILE.skills.certificates))) || [];
+  const certifications = externalCerts.length > 0 ? externalCerts : localCertificates;
+
+  function renderBars(skills, containerId, isSoft) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    skills.forEach(skill => {
+      const item = document.createElement('div');
+      item.className = 'skill-bar-item';
+      item.innerHTML = `
+        <div class="skill-bar-top">
+          <span class="skill-bar-name">${skill.name}</span>
+          <span class="skill-bar-pct">${skill.level}%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill ${isSoft ? 'soft' : ''}" data-pct="${skill.level}"></div>
+        </div>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  function renderChips(skills, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    skills.forEach(skill => {
+      const chip = document.createElement('div');
+      chip.className = 'skill-chip';
+      chip.textContent = skill.name;
+      container.appendChild(chip);
+    });
+  }
+
+  function renderCertificates(certs, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    if (certs.length === 0) {
+      document.getElementById('cert-section').style.display = 'none';
+      return;
+    }
+    
+    certs.forEach(cert => {
+      const card = document.createElement('div');
+      card.className = 'cert-card';
+      card.innerHTML = `
+        <div class="cert-image-wrap">
+          <img src="${cert.image || 'assets/img/placeholder.jpg'}" alt="${cert.title || cert.name}" />
+        </div>
+        <div class="cert-title">${cert.title || cert.name}</div>
+        <div class="cert-issuer">${cert.issuer || cert.authority || ''}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  renderBars(technicalSkills, 'tech-bars', false);
+  renderBars(softSkills, 'soft-bars', true);
+  renderChips(technicalSkills, 'tech-chips');
+  renderChips(softSkills, 'soft-chips');
+  renderCertificates(certifications, 'cert-container');
+
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          setTimeout(() => {
+            bar.style.width = bar.dataset.pct + '%';
+          }, 200);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('#tech-card, #soft-card').forEach(el => barObserver.observe(el));
+</script>
+</body>
+</html>
