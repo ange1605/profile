@@ -1,374 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Angeline G. Garcia</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <style>
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 28px;
-      align-items: start;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Angeline Garcia</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Contact Page Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e8d5f5 50%, #d4b8e8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
 
-    /* ── Info panel ── */
-    .contact-info-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+        .contact-container {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
-    .info-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
+        .contact-container h1 {
+            color: #4C1D95;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
 
-    .info-card-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+        .contact-container .subtitle {
+            text-align: center;
+            color: #7e57c2;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
 
-    .info-card-body { padding: 16px 20px; }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    .info-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--body);
-      font-size: 0.875rem;
-      transition: color var(--transition);
-    }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #4C1D95;
+            margin-bottom: 5px;
+        }
 
-    .info-link:last-child { border-bottom: none; }
-    .info-link:hover { color: var(--accent); }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d1c4e9;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background: #f8f0ff;
+            box-sizing: border-box;
+        }
 
-    .info-link-icon {
-      width: 32px; height: 32px;
-      border-radius: 7px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #8B5CF6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
 
-    .info-link-icon svg { width: 15px; height: 15px; color: var(--muted); }
-    .info-link:hover .info-link-icon svg { color: var(--accent); }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
 
-    .info-link-text { display: flex; flex-direction: column; }
-    .info-link-label { font-size: 0.7rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
-    .info-link-value { font-size: 0.83rem; font-weight: 500; color: var(--ink); }
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+        }
 
-    .availability-block {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      background: var(--green-bg);
-      border: 1px solid var(--green-bd);
-      border-radius: 8px;
-      font-size: 0.83rem;
-      font-weight: 500;
-      color: var(--green);
-    }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
 
-    .availability-block .pulse-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      animation: pulse 2s infinite;
-    }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 25px;
+        }
 
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(26,127,55,.4); }
-      50%       { box-shadow: 0 0 0 5px rgba(26,127,55,0); }
-    }
+        .social-links a {
+            color: #4C1D95;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            background: #f8f0ff;
+            border-radius: 50px;
+        }
 
-    /* ── Form ── */
-    .form-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
+        .social-links a:hover {
+            color: #8B5CF6;
+            background: #ede0ff;
+        }
 
-    .form-card-header {
-      padding: 20px 28px;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, var(--ink) 0%, #1c2a40 100%);
-    }
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 12px;
+            color: #2e7d32;
+            font-weight: 500;
+        }
 
-    .form-card-header h2 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.35rem;
-      color: #F0F6FC;
-      font-weight: 400;
-      margin-bottom: 4px;
-    }
-
-    .form-card-header p {
-      font-size: 0.82rem;
-      color: #8B949E;
-    }
-
-    .form-card-body { padding: 28px; }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group:last-of-type { margin-bottom: 0; }
-
-    label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 6px;
-      letter-spacing: .01em;
-    }
-
-    label .req { color: var(--accent); margin-left: 2px; }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px 14px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      color: var(--ink);
-      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
-      outline: none;
-    }
-
-    input:focus, textarea:focus {
-      border-color: var(--accent);
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(31,111,235,.1);
-    }
-
-    textarea { resize: vertical; min-height: 120px; }
-
-    .form-error {
-      font-size: 0.75rem;
-      color: #CF222E;
-      margin-top: 5px;
-      min-height: 1em;
-    }
-
-    .form-group.has-error input,
-    .form-group.has-error textarea {
-      border-color: #CF222E;
-      background: #FFF5F5;
-    }
-
-    .form-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 24px;
-      flex-wrap: wrap;
-    }
-
-    #form-submit {
-      padding: 11px 26px;
-      background: var(--ink);
-      color: #F0F6FC;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: opacity var(--transition);
-    }
-
-    #form-submit:hover { opacity: .85; }
-    #form-submit:disabled { opacity: .5; cursor: not-allowed; }
-
-    .form-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    /* Status message */
-    .form-status {
-      display: none;
-      margin-top: 20px;
-      padding: 14px 18px;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      line-height: 1.6;
-    }
-
-    .form-status--success {
-      background: var(--green-bg);
-      border: 1px solid var(--green-bd);
-      color: var(--green);
-    }
-
-    .form-status--error {
-      background: #FFF5F5;
-      border: 1px solid #FFCDD2;
-      color: #CF222E;
-    }
-
-    @media (max-width: 680px) {
-      .contact-layout { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+        .success-message.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="nav-brand">
-    <div class="nav-initials">AG</div>
-    <span class="nav-brand-name">Angeline G. Garcia</span>
-  </a>
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="education.html">Education</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="contact.html" class="nav-cta">Contact</a></li>
-  </ul>
-</nav>
+    <div class="contact-container">
 
-<div class="page-wrap">
-  <div class="section-eyebrow"><span>Contact</span></div>
+        <h1>📬 Get in Touch</h1>
+        <p class="subtitle">I'd love to hear from you — feel free to send me a message!</p>
 
-  <div class="contact-layout">
-
-    <!-- Info panel -->
-    <aside class="contact-info-panel reveal">
-
-      <div class="availability-block">
-        <span class="pulse-dot"></span>
-        Open to internships & collaborations
-      </div>
-
-      <div class="info-card">
-        <div class="info-card-header">Direct Contact</div>
-        <div class="info-card-body">
-          <a href="mailto:anglngleragrca@gmail.com" class="info-link">
-            <div class="info-link-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-            </div>
-            <div class="info-link-text">
-              <span class="info-link-label">Email</span>
-              <span class="info-link-value">anglngleragrca@gmail.com</span>
-            </div>
-          </a>
-          <a href="https://www.facebook.com/share/1L5s6URiWh" target="_blank" rel="noopener" class="info-link">
-            <div class="info-link-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-            </div>
-            <div class="info-link-text">
-              <span class="info-link-label">Facebook</span>
-              <span class="info-link-value">View Profile →</span>
-            </div>
-          </a>
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message">
+            ✅ Thank you! Your message has been sent successfully.
         </div>
-      </div>
 
-      <div class="info-card">
-        <div class="info-card-header">Response Time</div>
-        <div class="info-card-body" style="font-size:.85rem; color:var(--muted); line-height:1.6; padding:16px 20px;">
-          I typically respond within <strong style="color:var(--ink)">1–2 business days</strong>. For urgent matters, reaching out directly via email is the fastest option.
-        </div>
-      </div>
+        <!-- Contact Form -->
+        <form id="contactForm" action="https://formsubmit.co/anglngleragrca@gmail.com" method="POST">
 
-    </aside>
+            <!-- FormSubmit Options (Optional but Useful) -->
+            <input type="hidden" name="_subject" value="New Message from Portfolio" />
+            <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_next" value="https://ange1605.github.io/profile/contact.html" />
 
-    <!-- Form -->
-    <div class="form-card reveal">
-      <div class="form-card-header">
-        <h2>Send me a message</h2>
-        <p>Fill out the form and your email client will open with a pre-filled message.</p>
-      </div>
-      <div class="form-card-body">
-        <form id="contact-form" novalidate>
-
-          <div class="form-row">
             <div class="form-group">
-              <label for="name">Full Name <span class="req">*</span></label>
-              <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" />
-              <div class="form-error" role="alert"></div>
+                <label for="name">👤 Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
             </div>
+
             <div class="form-group">
-              <label for="email">Email Address <span class="req">*</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
-              <div class="form-error" role="alert"></div>
+                <label for="email">📧 Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="What's this about?" />
-            <div class="form-error" role="alert"></div>
-          </div>
+            <div class="form-group">
+                <label for="message">💬 Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
 
-          <div class="form-group">
-            <label for="msg">Message <span class="req">*</span></label>
-            <textarea id="msg" name="msg" placeholder="Write your message here… (at least 20 characters)"></textarea>
-            <div class="form-error" role="alert"></div>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" id="form-submit">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              Send Message
-            </button>
-            <span class="form-note">Opens your email client with pre-filled content.</span>
-          </div>
-
-          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+            <button type="submit" class="btn">Send Message ✨</button>
 
         </form>
-      </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="mailto:anglngleragrca@gmail.com">📧 Email</a>
+            <a href="https://facebook.com/yourusername" target="_blank">📘 Facebook</a>
+            <a href="https://ange1605.github.io/profile/">🏠 Home</a>
+        </div>
+
     </div>
 
-  </div>
-</div>
+    <script>
+        // Show success message on form submit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Let the form submit naturally to FormSubmit
+            // But show a success message after a short delay
+            setTimeout(function() {
+                document.getElementById('successMessage').classList.add('show');
+            }, 500);
+        });
+    </script>
 
-<footer class="site-footer">
-  © <span id="footer-year"></span> <span class="site-footer-name"></span> · BS Computer Science
-</footer>
-
-<script src="assets/js/data.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/contact.js"></script>
-<script>
-  document.getElementById('footer-year').textContent = new Date().getFullYear();
-</script>
 </body>
 </html>
