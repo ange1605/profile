@@ -3,365 +3,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Angeline G. Garcia — Portfolio</title>
-  <meta name="description" content="Personal portfolio of Angeline G. Garcia, BS Computer Science student at DMMMSU-SLUC." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Angeline G. Garcia | Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── Hero ── */
-    .hero {
-      min-height: calc(100vh - var(--nav-h, 70px));
-      display: flex;
-      align-items: center;
-      padding: 60px 24px;
-      max-width: 1000px;
-      margin: 0 auto;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 60px;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted, #6c757d);
-      margin-bottom: 20px;
-    }
-
-    .hero-eyebrow .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--green, #28a745);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4); }
-      50%       { box-shadow: 0 0 0 6px rgba(40, 167, 69, 0); }
-    }
-
-    .hero h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: clamp(2.6rem, 6vw, 4rem);
-      font-weight: 400;
-      color: var(--ink, #212529);
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      margin-bottom: 16px;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent, #007bff);
-    }
-
-    .typewriter-wrap {
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: var(--muted, #6c757d);
-      min-height: 1.6em;
-      margin-bottom: 28px;
-    }
-
-    #typewriter {
-      color: var(--ink, #212529);
-      border-right: 2px solid var(--accent, #007bff);
-      padding-right: 3px;
-      animation: blink .7s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--muted, #6c757d);
-      line-height: 1.75;
-      max-width: 540px;
-      margin-bottom: 36px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    /* Avatar System */
-    .hero-avatar-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .hero-avatar-ring {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent, #007bff) 0%, #79C0FF 100%);
-      padding: 4px;
-      box-shadow: 0 20px 40px rgba(31,111,235,.15);
-      transition: transform 0.3s ease;
-    }
-
-    .hero-avatar-ring:hover {
-      transform: scale(1.03);
-    }
-
-    .hero-avatar-ring-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--ink, #212529); /* Dark background for modern high contrast layout */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f3e8ff, #e8d5f5, #d4b8e8);
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      padding: 2rem 1rem;
     }
 
-    .avatar-fallback {
+    .card {
+      background: #f8f0ff;
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      max-width: 600px;
       width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 4rem;
-      font-weight: 400;
-      color: #F0F6FC;
-      letter-spacing: -0.02em;
-      user-select: none;
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
     }
 
-    .hero-badge {
-      position: absolute;
-      bottom: 12px;
-      right: -8px;
-      background: #ffffff;
-      border: 1px solid var(--border, #dee2e6);
-      border-radius: 8px;
-      padding: 8px 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--green, #28a745);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .hero-badge .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green, #28a745);
-    }
-
-    /* Stats strip */
-    .stats-strip {
-      border-top: 1px solid var(--border, #dee2e6);
-      border-bottom: 1px solid var(--border, #dee2e6);
-      background: #ffffff;
-      padding: 32px 24px;
-    }
-
-    .stats-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .stat-item {
+    .profile-header {
       text-align: center;
-      padding: 0 24px;
-      border-right: 1px solid var(--border, #dee2e6);
+      margin-bottom: 2rem;
     }
 
-    .stat-item:last-child { border-right: none; }
-
-    .stat-number {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 2.6rem;
-      font-weight: 400;
-      color: var(--ink, #212529);
-      line-height: 1;
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #8B5CF6;
+      margin-bottom: 1rem;
     }
 
-    .stat-label {
-      font-size: 0.8rem;
+    .profile-img-placeholder {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #d4b8e8;
+      border: 4px solid #8B5CF6;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #4C1D95;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #4C1D95;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #5B21B6;
+      margin-top: 0.25rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.2rem;
+      border: 2px solid #8B5CF6;
+      background: transparent;
+      color: #8B5CF6;
+      border-radius: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
       font-weight: 500;
-      color: var(--muted, #6c757d);
-      margin-top: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: #8B5CF6;
+      color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .info-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #8B5CF6;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      color: #8B5CF6;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    /* Quick links */
-    .quick-links {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 64px 24px 90px;
+    .info-value {
+      font-size: 0.95rem;
+      color: #4C1D95;
+      font-weight: 500;
+      margin-top: 0.1rem;
     }
 
-    .quick-grid {
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
     }
 
-    .quick-card {
-      background: #ffffff;
-      border: 1px solid var(--border, #dee2e6);
-      border-radius: var(--radius, 12px);
-      padding: 24px;
-      text-decoration: none;
-      color: var(--body, #495057);
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .quick-card:hover {
-      border-color: var(--accent, #007bff);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-    }
-
-    .quick-icon {
-      width: 42px; height: 42px;
+    .skill-chip {
+      background: #fff;
+      border: 2px solid #8B5CF6;
+      color: #4C1D95;
       border-radius: 10px;
-      background: var(--ink, #212529);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .quick-icon svg { width: 20px; height: 20px; color: #79C0FF; }
-
-    .quick-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--ink, #212529);
-    }
-
-    .quick-desc {
+      padding: 0.6rem 0.8rem;
       font-size: 0.85rem;
-      color: var(--muted, #6c757d);
-      line-height: 1.5;
+      font-weight: 500;
+      text-align: center;
     }
 
-    .quick-arrow {
-      margin-top: auto;
-      font-size: 0.85rem;
-      color: var(--accent, #007bff);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      transition: gap 0.2s;
-    }
-
-    .quick-card:hover .quick-arrow {
-      gap: 8px;
-    }
-
-    /* Responsive Architecture Modernization */
-    @media (max-width: 768px) {
-      .hero { padding: 40px 24px; }
-      .hero-inner { 
-        grid-template-columns: 1fr; 
-        text-align: center;
-        gap: 40px;
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.25rem;
       }
-      .hero-eyebrow { justify-content: center; }
-      .hero-desc { margin-left: auto; margin-right: auto; }
-      .hero-actions { justify-content: center; }
-      
-      .hero-avatar-wrap { 
-        grid-row: 1; /* Moves avatar initials above text content on mobile screens */
-        align-self: center;
-        margin: 0 auto;
+
+      h1 {
+        font-size: 1.35rem;
       }
-      .hero-avatar-ring { width: 160px; height: 160px; }
-      .avatar-fallback { font-size: 3rem; }
-      
-      .stats-inner { grid-template-columns: 1fr; gap: 0; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border, #dee2e6); padding: 20px 0; }
-      .stat-item:last-child { border-bottom: none; }
+
+      .tab-btn {
+        font-size: 0.8rem;
+        padding: 0.45rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="nav-brand">
-    <div class="nav-initials">AG</div>
-    <span class="nav-brand-name">Angeline G. Garcia</span>
-  </a>
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="education.html">Education</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="contact.html" class="nav-cta">Contact</a></li>
-  </ul>
-</nav>
+  <div class="card">
+    <div class="profile-header">
+      <div class="profile-img-placeholder">👩</div>
+      <h1>Angeline G. Garcia</h1>
+      <p class="subtitle">BS Computer Science Student</p>
+    </div>
 
-<section class="hero" aria-label="Introduction">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-eyebrow">
-        <span class="dot"></span>
-        Available for opportunities
-      </div>
-      <h1>Hi, I'm<br><em>Angeline</em> Garcia.</h1>
-      <div class="typewriter-wrap">
-        I'm a <span id="typewriter"></span>
-      </div>
-      <p class="hero-desc" id="hero-desc">Loading personal summary...</p>
-      <div class="hero-actions">
-        <a href="about.html" class="btn btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          About Me
-        </a>
-        <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('about', this)">About</button>
+      <button class="tab-btn" onclick="showTab('education', this)">Education</button>
+      <button class="tab-btn" onclick="showTab('skills', this)">Skills</button>
+      <button class="tab-btn" onclick="showTab('contact', this)">Contact</button>
+    </div>
+
+    <div id="about" class="tab-content active">
+      <div class="info-row">
+        <div class="info-item">
+          <div class="info-label">Name</div>
+          <div class="info-value">Angeline G. Garcia</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Birthday</div>
+          <div class="info-value">January 16, 2005</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Address</div>
+          <div class="info-value">Linapew, Tubao, La Union</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Status</div>
+          <div class="info-value">BS Computer Science, DMMMSU South La Union Campus</div>
+        </div>
       </div>
     </div>
 
-    <!-- Initials-Based Avatar Container -->
-    <div class="hero-avatar-wrap">
-      <div class="hero-avatar-ring">
-        <div class="hero-avatar-ring-inner">
-          <div class="avatar-fallback">AG</div>
+    <div id="education" class="tab-content">
+      <div class="info-row">
+        <div class="info-item">
+          <div class="info-label">University</div>
+          <div class="info-value">Don Mariano Marcos Memorial State University – SLUC</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Degree</div>
+          <div class="info-value">Bachelor of Science in Computer Science</div>
         </div>
       </div>
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Open to internships
+    </div>
+
+    <div id="skills" class="tab-content">
+      <div class="skills-grid">
+        <div class="skill-chip">Communication</div>
+        <div class="skill-chip">Teamwork</div>
+        <div class="skill-chip">Basic Web Development</div>
+        <div class="skill-chip">HTML / CSS</div>
+      </div>
+    </div>
+
+    <div id="contact" class="tab-content">
+      <div class="info-row">
+        <div class="info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value">anglngleragrca@gmail.com</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Facebook</div>
+          <div class="info-value">Your Facebook Profile URL</div>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="stats-strip" aria-label="Quick stats">
-  <!-- Continue rendering your stats items down below -->
-</div>
+  <script>
+    function showTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
